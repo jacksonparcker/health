@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Online Marketing Services">
+    <meta name="keywords" content="HEALTH AND BEAUTY">
+    <meta name="JACKSON PARCKER" content="HEALTH AND BEAUTY COMPANY">
+    <title>HEALTH AND BEAUTY COMPANY</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 2vw;
+        }
+
+        header {
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .profile {
+          display: flex;
+          background: #0000a4;
+          width: 15vw;
+          text-align: center;
+          margin-top: 2.5vw;
+          border: 1vw solid aqua;
+          border-radius: 2vw;
+          font-size: 4vw;
+          height: 12;
+          padding: 1vw;
+        }
+        h1 {
+            margin-top: -8vw;
+            font-size: 4vw;
+            width: 60vw;
+            position: relative;
+            display: flex;
+            margin-left: 18vw;
+            background: #0000a4;
+            border-radius: 2vw;
+        }
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-template-rows: repeat(10, auto); /* 10 rows */
+            gap: 2vw;
+            height: 130vw; /* Set a fixed height for vertical scrolling */
+            overflow-y: scroll; /* Enable vertical scroll */
+            padding: 1vw;
+            width: 80vw;
+            margin-left: 14vw;
+            background-color: white;
+            border-radius: 2vw;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-container1 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            grid-template-rows: repeat(10, auto); /* 10 rows */
+            gap: 2vw;
+            height: 130vw; /* Set a fixed height for vertical scrolling */
+            overflow-y: scroll; /* Enable vertical scroll */
+            padding: 1vw;
+            width: 80vw;
+            margin-left: 14vw;
+            background-color: white;
+            border-radius: 2vw;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item {
+            background-color: #007bff;
+            color: white;
+            padding: 2vw;
+            text-align: center;
+            border-radius: 2vw;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            height: 55vw;
+        }
+        .serviceimage { 
+          width: 25vw;
+          height: 30vw;
+        }
+        .serviceimagelarge {
+          width: 75vw;
+          height: 35vw;
+         
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .item-name {
+            margin-top: 1vw;
+            font-size: 3vw;
+            color: black;
+            height: 5vw;
+           
+        }
+
+        .item-price {
+            margin-top: 5vw;
+            font-size: 4vw;
+            color: #fafafa;
+        }
+
+        .add-to-cart-btn {
+            margin-top: -2vw;
+            padding: 5px 10px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #e64a19;
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+          position: absolute;
+          padding: 2vw;
+            background-color: #f17c00;
+            color: white;
+            border-radius: 20vw;
+            cursor: pointer;
+            font-size: 3vw;
+            width: 9vw;
+            height: 9vw;
+            margin-left: 84vw;
+            margin-top: -9vw;
+        }
+
+        /* Cart Popup */
+        .cart-popup {
+            position: fixed;
+            
+            top: 15vw;
+            right: 6vw;
+            width: 75vw;
+            background-color: white;
+            
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none; /* Initially hidden */
+        }
+
+        .cart-popup h3 {
+            margin-bottom: 10px;
+        }
+
+        .cart-items {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .remove-item-btn {
+            margin-left: 10px;
+            padding: 2px 5px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-item-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .submit-cart-btn {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .submit-cart-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Service Details Section */
+        .service-details {
+            background-color: white;
+            padding: 2vw;
+            border-radius: 2vw;
+            overflow-y: scroll;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 5vw;
+            width: 80vw;
+            height: 130vw;
+            margin-left: 14vw;
+            display: none; /* Initially hidden */
+        }
+        .profile-details {
+            background-color: black;
+            padding: 2vw;
+            border-radius: 2vw;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: -130vw;
+            width: 80vw;
+            position: relative;
+            margin-left: 15vw;
+            height: 130vw;
+            display: none; /* Initially hidden */
+        }
+        .tosend {
+            background-color: aqua;
+            padding: 2vw;
+            border-radius: 2vw;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: -90vw;
+            width: 80vw;
+            position: relative;
+            margin-left: 15vw;
+            height: 50vw;
+            border: 1vw solid blue;
+            display: none; /* Initially hidden */
+        }
+        .tosend input{
+          margin-left: 11vw;
+          border: 1vw solid blue;
+          border-radius: 2vw;
+          font-size: 3vw;
+          width: 50vw;
+          height: 6vw;
+        }
+        .tosend p{
+          color: blue;
+          text-align: center;
+          font-size: 4vw;
+        }
+        .tosend button {
+          width: 17vw;
+          background: white;
+          border: 1vw solid blue;
+          text-align: center;
+          margin-left: 29vw;
+          border-radius: 1vw;
+          height: 7vw;
+        }
+        .profile-details img{
+          width: 50vw;
+        }
+
+        .service-title {
+            color: #007bff;
+            font-size: 5vw;
+            margin-bottom: 2vw;
+            margin-left: 1vw;
+            
+        }
+
+        .service-description {
+            font-size: 4vw;
+            line-height: 1.5;
+            margin-left: 1vw;
+        }
+        .other {
+          margin-left: 25vw;
+          font-size: 4vw;
+          color: blue;
+        }
+
+        /* Horizontal Scroll Grid at Bottom */
+        .grid-container-horizontal {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); /* 6 columns for a wider scroll */
+            gap: 2vw;
+            overflow-x: auto; /* Enable horizontal scroll */
+            padding: 2vw;
+            background-color: white;
+            border-radius: 2vw;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 4vw;
+            text-align: center;
+            
+            /* Ensure the items stay in a single row */
+        }
+
+        .grid-container-horizontal::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for cleaner look */
+        .grid-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .grid-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 2vw;
+            display: flex;
+            margin-top: 2vw;
+            margin-left: 20vw;
+            
+        }
+
+        .search-container input[type="text"] {
+            padding: 1vw;
+            font-size: 5vw;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-container input[type="text"]:focus {
+            border-color: #007bff;
+        }
+        .base {
+          position: relative;
+          display: flex;
+          margin-top: -142vw;
+          margin-left: -3vw;
+          width: 33vw;
+          height: 145vw;
+        }
+        .ball {
+          position: relative;
+          display: flex;
+          margin-top: -87vw;
+          width: 25vw;
+          height: 27vw;
+        }
+        .footer {
+          background: black;
+          position: relative;
+          display: flex;
+        }
+        .this {
+          width: 15vw;
+          height: 15.5vw;
+          position: relative;
+          margin-left: -2.5vw;
+          
+        }
+        .sea {
+          position: relative;
+          margin-left: -2vw;
+          margin-top: -1.9vw;
+          color: white;
+          background: blue;
+          border: 1vw solid aqua;
+          width: 15vw;
+          border-radius: 2vw;
+          text-align: center;
+          font-size: 4vw;
+          
+        }
+        .lab1 {
+          margin-top: -70vw;
+        }
+        .lab2 {
+          margin-top: 1vw;
+        }
+        .lab3 {
+          margin-top: 23vw;
+        }
+        .lab4 {
+          margin-top: 2vw;
+        }
+        .footer {
+          height: 30vw;
+          margin-top: 18vw;
+          }
+        
+        .filter-items {
+          
+            background-color: aqua;
+            padding: 2vw;
+            border-radius: 2vw;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: -130vw;
+            width: 80vw;
+            position: relative;
+            margin-left: 15vw;
+            height: 50vw;
+            border: 1vw solid blue;
+            display: none; /* Initially hidden */
+        }
+        .filter-items button {
+          width: 50vw;
+          margin: 2vw 15vw;
+        }
+        .grid-sectio {
+          margin-top: -130vw;
+          position: relative;
+          display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+      <button class="profile" id="profile-button">Profile</button>
+        <h1>HEALTH AND BEAUTY COMPANY</h1>
+
+        <!-- Cart Icon -->
+        <div class="cart-icon" onclick="toggleCartPopup()">🛒 (<span id="cart-count">0</span>)</div>
+    </header>
+
+    <!-- Search Bar Section -->
+    <section class="contain-z">
+    <div class="search-container">
+        <input class="search" type="text" id="search-bar" placeholder="Search for product" oninput="filterServices()">
+    </div>
+
+    <!-- Grid Section with 3x10 vertical scroll layout -->
+    <section id="grid-section">
+        <div class="grid-container" id="services-grid">
+            <!-- Dynamically load items here -->
+        </div>
+      
+    </section>
+   
+          <div>
+        
+    <!-- Service Details Section (Initially Hidden) -->
+    <section id="service-details" class="service-details">
+      <img id="service-image" class="serviceimagelarge">
+        <h2 class="service-title" id="service-title"></h2>
+        <button id="add-to-cart-btn" class="add-to-cart-btn">Add to Cart</button>
+        <p class="service-title" id="service-price"></p>
+        <p class="service-description" id="service-description"></p>
+        <!-- Other Services Section at Bottom with Horizontal Scroll -->
+        <div class="other">other products</div>
+        <div class="grid-container-horizontal" id="other-services-grid">
+            <!-- Dynamically load other services here -->
+        </div>
+        <div>
+        
+    </section>
+<section id="profile-details" class="profile-details">
+      <img src="owner.png" class="owner">
+        <h2 class="service-title"></h2>
+        <p class="service-title"></p>
+        <p class="service-description"></p>
+        <!-- Other Services Section at Bottom with Horizontal Scroll -->
+        <div class="other">other products</div>
+    </section>
+    <section id="grid-sectio" class="grid-sectio">
+        <div class="grid-container1" id="servi-grid">
+            <!-- Dynamically load items here -->
+        </div>
+      
+    </section>
+
+    
+
+        <div>
+        <img src="base.png" class="base">
+        </div>
+        <div>
+          <img src="ball.png" class="ball">
+        </div>
+        <div class="lab1">
+          <img src="ball.png" class="this" >
+          <p class="sea">Search</p>
+        </div>
+        <div class="lab2">
+          <img src="ball.png" class="this" onclick="goBackToGrid()">
+          <p class="sea" onclick="goBackToGrid()">Home</p>
+        </div>
+        <div class="lab3">
+          <img src="ball.png" class="this" id="types">
+          <p class="sea">Type</p>
+        </div>
+        <div class="lab4">
+          <img src="ball.png" class="this">
+          <p class="sea">Help</p>
+        </div>
+        
+    <!-- Footer Section -->
+       <footer class="footer">
+          <div class="">
+            info
+          </div>
+          <div class="">
+            platforms
+          </div>
+          <div class="">
+            contacts
+          </div>
+       </footer>
+       
+    <!-- Cart Popup -->
+    <div id="cart-popup" class="cart-popup">
+        <h3>Your Cart</h3>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be listed here -->
+        </div>
+        <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+        <button class="submit-cart-btn" id="shoow">Submit Order</button>
+    </div>
+    
+          <section id="tosend" class="tosend">
+      <p>Please enter datails</p>
+        <p class="location">location</p>
+        <input type="text" placeholder="location" id="location">
+        <p class="phone">phone</p>
+        <input type="text" placeholder="phone" id="phone">
+        <p class="address">address</p>
+        <input type="text" placeholder="address" id="address">
+        <button onclick="submitCart()">submit</button>
+    </section>
+    
+    
+    <section class="filter-items" id="filter-items">
+    <div id="services-list"></div>
+    <button onclick="filterServicesByType('All')">All</button>
+<button onclick="filterServicesByType('Marketing')">Marketing</button>
+<button onclick="filterServicesByType('Advertising')">Advertising</button>
+<button onclick="filterServicesByType('Optimization')">Optimization</button>
+      </section>
+
+
+
+
+
+    <script>
+      
+      var popuptype = document.getElementById("filter-items");
+  var showPopupBtn1 = document.getElementById("types");
+showPopupBtn1.onclick = function() {
+    if (popuptype.style.display === "none" || popuptype.style.display === "") {
+      popuptype.style.display = "block"; // Show the section
+      togglePopupBtn.textContent = "Profile"; // Change button text to "Hide"
+    } else {
+      popuptype.style.display = "none"; // Hide the section
+      togglePopupBtn.textContent = "Show Section"; // Change button text to "Show"
+    }
+  }
+      var popupSection = document.getElementById("profile-details");
+  var showPopupBtn = document.getElementById("profile-button");
+var showPopupBtn = document.getElementById("profile-button");
+showPopupBtn.onclick = function() {
+    if (popupSection.style.display === "none" || popupSection.style.display === "") {
+      popupSection.style.display = "block"; // Show the section
+      togglePopupBtn.textContent = "Profile"; // Change button text to "Hide"
+    } else {
+      popupSection.style.display = "none"; // Hide the section
+      togglePopupBtn.textContent = "Show Section"; // Change button text to "Show"
+    }
+  }
+  
+  
+  
+      var popupcart = document.getElementById("tosend");
+   var showPopupBtn = document.getElementById("shoow");
+showPopupBtn.onclick = function() {
+    if (popupcart.style.display === "none" || popupSection.style.display === "") {
+      popupcart.style.display = "block"; // Show the section
+      
+    } else {
+      popupcart.style.display = "none"; // Hide the section
+      
+    }
+  }
+        const services = [
+    {
+        id: 1,
+        image: "logo.png",
+        title: "Search Engine Optimization (SEO)",
+        description: "Improve your website's visibility on search engines like Google.",
+        price: 300,
+        type: "Optimization"
+    },
+    {
+        id: 2,
+        image: "logo.png",
+        title: "Content Marketing",
+        description: "Create and distribute valuable content to attract and engage your target audience.",
+        price: 250,
+        type: "Marketing"
+    },
+    {
+        id: 3,
+        image: "logo.png",
+        title: "Pay-Per-Click Advertising (PPC)",
+        description: "Drive traffic to your website through paid search advertising.",
+        price: 400,
+        type: "Advertising"
+    },
+    {
+        id: 4,
+        image: "logo.png",
+        title: "Social Media Marketing",
+        description: "Build your brand’s presence on social media platforms like Facebook, Instagram, and Twitter.",
+        price: 200,
+        type: "Marketing"
+    },
+    {
+        id: 5,
+        image: "logo.png",
+        title: "Email Marketing",
+        description: "Drive customer engagement with personalized email campaigns and newsletters.",
+        price: 150,
+        type: "Marketing"
+    },
+    {
+        id: 6,
+        image: "logo.png",
+        title: "Conversion Rate Optimization (CRO)",
+        description: "Optimize your website to increase the percentage of visitors who take desired actions.",
+        price: 350,
+        type: "Optimization"
+    }
+];
+
+        let cart = [];
+
+        // Generate grid items dynamically
+        function generateGridItems() {
+            const gridContainer = document.getElementById('services-grid');
+            gridContainer.innerHTML = ''; // Clear the grid
+            
+            services.forEach(service => {
+                const gridItem = document.createElement('div');
+                gridItem.className = 'grid-item';
+                
+                gridItem.innerHTML = `
+               <img  class="item-icon"><img src="${service.image}" class="serviceimage"></div>
+                                      <div class="item-name">${service.title}</div>
+                                      <div class="item-price">Shs${service.price}</div>
+                                      <button class="add-to-cart-btn" onclick="addToCart(${service.id})">Add to Cart</button>`;
+                gridItem.addEventListener('click', () => loadServiceDetails(service.id));
+                gridContainer.appendChild(gridItem);
+            });
+        }
+
+        // Load service details when an item is clicked
+        function loadServiceDetailns(serviceId) {
+    // Find the selected service by id
+    const selectedService = services.find(service => service.id === serviceId);
+    
+    // Set service title and description
+    document.getElementById('service-title').innerText = selectedService.title;
+    
+    document.getElementById('service-description').innerText = selectedService.description;
+document.getElementById('serviceimage').src = selectedService.image;
+document.getElementById('service-price').innerText = selectedService.price;
+    // Set the service image (if you have an image in the service details)
+    const serviceImage = document.getElementById('service-image');
+    if (serviceImage) {
+        serviceImage.src = selectedService.image;
+        serviceImage.alt = selectedService.title;  // Set alt attribute for better accessibility
+    }
+     document.getElementById('grid-sectio').style.display = 'none';
+
+    // Show service details section and hide the grid
+    document.getElementById('grid-section').style.display = 'none';
+    document.getElementById('service-details').style.display = 'block';
+
+    // Generate the horizontal grid of other services
+    generateOtherServices(serviceId);
+}
+
+function generateOtherServices(currentServiceId) {
+    const otherServicesContainer = document.getElementById('other-services');
+    otherServicesContainer.innerHTML = ''; // Clear any existing content
+
+    services.forEach(service => {
+        // Exclude the currently selected service
+        if (service.id !== currentServiceId) {
+            const serviceItem = document.createElement('div');
+             // Add a class for styling
+            
+            // Add content to the service item
+            
+            
+            // Add click event to load service details when clicking an item
+            serviceItem.addEventListener('click', () => {
+                loadServiceDetails(service.id);
+            });
+
+            // Append the service item to the horizontal grid container
+            otherServicesContainer.appendChild(serviceItem);
+        }
+    });
+}
+
+        // Add item to the cart
+        function addToCart(serviceId) {
+            const selectedService = services.find(service => service.id === serviceId);
+            cart.push(selectedService);
+            updateCart();
+        }
+
+        // Update cart icon and display total
+        function updateCart() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            cartCount.innerText = cart.length;
+
+            // Populate cart items
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `<span>${item.title}</span> <span>$${item.price}</span>
+                                      <button class="remove-item-btn" onclick="removeFromCart(${index})">Remove</button>`;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            cartTotal.innerText = total.toFixed(2);
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+        
+        // Submit cart information
+        function submyitCart() {
+            const email = "jacksonparcker2@gmail.com";
+            const subject = "Cart Submission";
+            const body = cart.map(item => `${item.title}: $${item.price}`).join('\n') + 
+                         `\n\nTotal: $${document.getElementById('cart-total').innerText}`;
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        // Toggle cart popup visibility
+        function toggleCartPopup() {
+            const cartPopup = document.getElementById('cart-popup');
+            cartPopup.style.display = cartPopup.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Generate other services grid for the service details page
+        function generateOtherServices(excludeServiceId) {
+            const otherServicesGrid = document.getElementById('other-services-grid');
+            otherServicesGrid.innerHTML = ''; // Clear the grid
+
+            services.forEach(service => {
+                if (service.id !== excludeServiceId) {
+                    const gridItem = document.createElement('div');
+                    gridItem.className = 'grid-item';
+                    gridItem.innerHTML = `<img  class="item-icon"><img src="${service.image}" class="serviceimage"></div>
+                    
+                                          <div class="item-name">${service.title}</div>
+                                          <div class="item-price">$${service.price}</div>
+                                          <button class="add-to-cart-btn" onclick="addToCart(${service.id})">Add to Cart</button>`;
+                    gridItem.addEventListener('click', () => loadServiceDetails(service.id));
+                    otherServicesGrid.appendChild(gridItem);
+                }
+            });
+        }
+
+        // Go back to the main grid view (Home Button functionality)
+        function goBackToGrid() {
+            document.getElementById('service-details').style.display = 'none'; // Hide the details section
+            document.getElementById('filter-items').style.display = 'none'; // Hide the details section
+            document.getElementById('profile-details').style.display = 'none'; // Hide the details section
+            document.getElementById('tosend').style.display = 'none'; // Hide the details section
+            document.getElementById('cart-popup').style.display = 'none'; // Hide the details section
+            document.getElementById('grid-sectio').style.display = 'none'; // Hide the details section
+            document.getElementById('grid-section').style.display = 'block'; // Show the grid section
+        }
+
+        // Filter services based on the search input
+        function filterServices() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const gridContainer = document.getElementById('services-grid');
+    gridContainer.innerHTML = ''; // Clear the grid
+
+    services.filter(service => service.title.toLowerCase().includes(query))
+        .forEach(filteredService => {
+            const gridItem = document.createElement('div');
+            gridItem.className = 'grid-item';
+
+            // Ensure the correct service image is used
+            gridItem.innerHTML = `
+                <img src="${filteredService.image}" class="serviceimage" alt="${filteredService.title} image">
+                <div class="item-name">${filteredService.title}</div>
+                <div class="item-price">$${filteredService.price}</div>
+                <button class="add-to-cart-btn" onclick="addToCart(${filteredService.id})">Add to Cart</button>
+            `;
+            gridItem.addEventListener('click', () => loadServiceDetails(filteredService.id));
+            gridContainer.appendChild(gridItem);
+        });
+}
+
+        // Load the grid items on page load
+        window.onload = generateGridItems;
+    </script>
+    <script>
+function submitCart() {
+    const email = "2024acek645f@kab.ac.ug";
+    const subject = "Cart Submission";
+    const body = cart.map(item => `${item.title}: $${item.price}`).join('<br>') +
+                 `<br><br>Total: $${document.getElementById('cart-total').innerText}` +
+                 `<br><br>Location: ${document.getElementById('location').value}` +
+                 `<br><br>Phone: ${document.getElementById('phone').value}` +
+                 `<br><br>Address: ${document.getElementById('address').value}`;
+
+    Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: email,
+        Password: "9B50EA530BFE09271469EA47D925548659B4",
+        To: email,
+        From: email,
+        Subject: subject,
+        Body: body, // Fixing the Body concatenation
+    }).then(
+        message => {
+            console.log('Email sent successfully:', message);
+            alert('Email sent successfully: ' + message);
+        }
+    ).catch(
+        error => {
+            console.error('Failed to send email:', error);
+            alert('Error sending email: ' + JSON.stringify(error));
+        }
+    );
+}
+
+// Assuming you already have the event listener for the form submission
+form1.addEventListener("submit", (e) => {
+    e.preventDefault();
+    submitCart();
+});
+    </script>
+      <script src="https://smtpjs.com/v3/smtp.js"></script>
+  
+      <script>
+function filterServicesByType(selectedType) {
+    const serviceContainer = document.getElementById('servi-grid');
+    serviceContainer.innerHTML = ''; // Clear previous content
+
+    // Filter services based on the selected type, or show all if 'All' is selected
+    const filteredServices = selectedType === 'All' 
+        ? services 
+        : services.filter(service => service.type === selectedType);
+
+    // If no services are found, display a message
+    if (filteredServices.length === 0) {
+        serviceContainer.innerHTML = '<p>No services available for this category.</p>';
+        return;
+    }
+
+    // Loop through filtered services and dynamically create service elements
+    filteredServices.forEach(service => {
+        const serviceElement = document.createElement('div');
+        
+        serviceElement.className = 'grid-item';
+
+        // Set the inner HTML of the service element
+        serviceElement.innerHTML = `
+            <div>
+                <img src="${service.image}" class="serviceimage" alt="${service.title}">
+            </div>
+            <div class="item-name">${service.title}</div>
+            <div class="item-price">$${service.price}</div>
+            <button class="add-to-cart-btn" onclick="addToCart(${service.id})">Add to Cart</button>
+        `;
+
+        // Add event listener to load service details when clicked
+        serviceElement.addEventListener('click', () => {
+    document.querySelector('.grid-sectio').style.display = 'none';
+    loadServiceDetails(service.id);
+});
+
+        // Append the new service element to the container
+        serviceContainer.appendChild(serviceElement);
+    });
+ // Hide the details section
+            document.getElementById('filter-items').style.display = 'none'; // Hide the details section
+            document.getElementById('profile-details').style.display = 'none'; // Hide the details section
+            document.getElementById('tosend').style.display = 'none'; // Hide the details section
+            document.getElementById('cart-popup').style.display = 'none'; // Hide the details section
+            document.getElementById('grid-sectio').style.display = 'block'; // Hide the details section
+            
+}
+      </script>
+      <script>
+        function loadServiceDetails(serviceId) {
+    // Find the selected service by id
+    const selectedService = services.find(service => service.id === serviceId);
+
+    // Set service title and description
+    document.getElementById('service-title').innerText = selectedService.title;
+    document.getElementById('service-description').innerText = selectedService.description;
+    document.getElementById('service-price').innerText = `$${selectedService.price}`;
+    
+    // Set the service image
+    const serviceImage = document.getElementById('service-image'); // Use the correct ID 'service-image'
+    if (serviceImage) {
+        serviceImage.src = selectedService.image;
+        serviceImage.alt = selectedService.title;
+    }
+
+    // Dynamically set the "Add to Cart" button
+    const addToCartBtn = document.getElementById('add-to-cart-btn'); // Make sure you have this button in your HTML
+    if (addToCartBtn) {
+        addToCartBtn.setAttribute('onclick', `addToCart(${selectedService.id})`);
+    }
+document.getElementById('grid-section').style.display = 'none';
+
+    document.getElementById('service-details').style.display = 'block';
+
+    // Generate the horizontal grid of other services
+    generateOtherServices(serviceId);
+}
+      </script>
+</body>
+</html>
